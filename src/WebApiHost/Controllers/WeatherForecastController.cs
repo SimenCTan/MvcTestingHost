@@ -28,10 +28,10 @@ namespace WebApiHost.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<WeatherForecast> Get()
+        public async Task<IEnumerable<WeatherForecast>> Get()
         {
             var rng = new Random();
-            var response = _greeterClient.SayHello(new HelloRequest { Name = "mvc test host" });
+            var response = await _greeterClient.SayHelloAsync(new HelloRequest { Name = "mvc test host" });
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {
                 Date = DateTime.Now.AddDays(index),

@@ -12,7 +12,7 @@ namespace WebApiHost
             var address = configuration.GetValue<string>("greetergrpc");
             services.AddGrpcClient<Greeter.GreeterClient>(o =>
             {
-                o.Address = new Uri("https://localhost:42002");
+                o.Address = new Uri("http://localhost:42002");
             });
             // .AddInterceptor(() => new LoggingInterceptor());
             return services;
