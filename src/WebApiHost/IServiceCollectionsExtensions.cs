@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using GrpcService;
 using System;
+using System.Net.Http;
 
 namespace WebApiHost
 {
@@ -13,8 +14,14 @@ namespace WebApiHost
             services.AddGrpcClient<Greeter.GreeterClient>(o =>
             {
                 o.Address = new Uri("http://localhost:42002");
+
             });
+
             // .AddInterceptor(() => new LoggingInterceptor());
+
+            // .ConfigurePrimaryHttpMessageHandler(()=>new HttpClientHandler {
+            //ServerCertificateCustomValidationCallback = HttpClientHandler.DangerousAcceptAnyServerCertificateValidator
+            //})
             return services;
         }
     }
